@@ -12,4 +12,8 @@ class Corporation < ApplicationRecord
   has_many :users
 
   validates :name, presence: true
+
+  scope :name_like, -> (name) {
+    where(arel_table[:name].matches("%#{name}%"))
+  }
 end
