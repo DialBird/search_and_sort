@@ -12,5 +12,12 @@
 #
 
 class User < ApplicationRecord
-  belongs_to :corporation
+  belongs_to :corporation, optional: true
+  has_many :dogs, dependent: :destroy
+
+  validates :name, presence: true
+  validates :age, presence: true,
+                  numericality: { only_integer: true,
+                                  greater_than: 0 }
+  validates :sex_id, inclusion: 1..3
 end
