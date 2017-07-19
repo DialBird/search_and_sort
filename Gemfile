@@ -44,10 +44,11 @@ group :development do
   gem 'annotate'
   gem 'rename'
   gem 'migration_comments'
+  gem 'faker'
+  gem 'rails-erd', require: false
 end
 
 group :test do
-  gem 'faker'
   gem 'database_cleaner'
 end
 
