@@ -15,7 +15,8 @@ class User < ApplicationRecord
   belongs_to :corporation, optional: true
   has_many :dogs, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true,
+                   uniqueness: true
   validates :age, presence: true,
                   numericality: { only_integer: true,
                                   greater_than: 0 }
