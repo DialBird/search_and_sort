@@ -12,8 +12,11 @@
 #
 
 class User < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   belongs_to :corporation, optional: true
   has_many :dogs, dependent: :destroy
+  belongs_to_active_hash :sex, shortcuts: [:name]
 
   validates :name, presence: true,
                    uniqueness: true
@@ -45,5 +48,8 @@ class User < ApplicationRecord
   }
   scope :has_no_dog, -> {
     where.not(id: Dog.pluck(:user_id).uniq)
+  }
+  scope :sex_is, -> (ids) {
+    where(sex_id: ids)
   }
 end
