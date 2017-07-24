@@ -15,6 +15,10 @@
   </div>
 <% end %>
 
+<div class="text-center">
+  <%= paginate @users %>
+</div>
+
 <% if controller.action_name == 'search' %>
   <table class="table table-striped">
     <thead>
@@ -39,3 +43,7 @@
     </tbody>
   </table>
 <% end %>
+
+<div class="text-center">
+  <%= paginate @users %>
+</div>
