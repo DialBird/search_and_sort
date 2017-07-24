@@ -23,9 +23,9 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>名前</th>
-        <th>年齢</th>
-        <th>性別</th>
+        <th><%= sort_link('名前 &#9660;'.html_safe, @search, :name) %></th>
+        <th><%= sort_link('年齢 &#9660;'.html_safe, @search, :age) %></th>
+        <th><%= sort_link('性別 &#9660;'.html_safe, @search, :sex_id) %></th>
         <th>会社名</th>
         <th>犬の数</th>
       </tr>
