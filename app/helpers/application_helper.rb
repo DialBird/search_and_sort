@@ -20,6 +20,12 @@ module ApplicationHelper
     end
   end
 
+  def sort_link(body, model, field)
+    path = "#{ActiveModel::Naming.route_key(model)}_path"
+    params = model.params_with_order(field)
+    link_to body.to_s, send(path, params)
+  end
+
   private
 
   def display_ul(messages)
