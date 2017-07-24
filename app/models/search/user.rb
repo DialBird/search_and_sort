@@ -2,12 +2,14 @@ class Search::User < Search::Base
   ATTRIBUTES = %i(
     name lower_limit_age higher_limit_age sex_ids
     has_dog is_employee corporation_name
+    sort
   ).freeze
 
   attr_accessor *ATTRIBUTES
 
   def initialize(attr = {})
     super(attr) if attr.present?
+    self.sort ||= :id
   end
 
   def matches
@@ -19,6 +21,7 @@ class Search::User < Search::Base
     users = search_by_has_dog(users)
     users = search_by_is_employee(users)
     users = users.corporation_name_like(corporation_name) if corporation_name.present?
+    users = users.order(sort)
     users
   end
 
