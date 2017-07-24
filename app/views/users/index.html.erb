@@ -15,25 +15,27 @@
   </div>
 <% end %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>年齢</th>
-      <th>性別</th>
-      <th>会社名</th>
-      <th>犬の数</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.age %></td>
-      <td><%= user.sex_id %></td>
-      <td><%= user.corporation.try!(:name) %></td>
-      <td><%= user.dogs.count %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<% if controller.action_name == 'search' %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>性別</th>
+        <th>会社名</th>
+        <th>犬の数</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.age %></td>
+        <td><%= user.sex_id %></td>
+        <td><%= user.corporation.try!(:name) %></td>
+        <td><%= user.dogs.count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
